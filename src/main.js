@@ -20,6 +20,7 @@ level.generate();
 
 var human = new Human();
 
+
 humanCollision.addCollision(dinosaurCollision, {
 	general: function() {
 		human.sprite.direction = (Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - human.sprite.y, dinosaur.sprite.x - human.sprite.x);
