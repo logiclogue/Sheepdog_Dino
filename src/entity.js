@@ -26,17 +26,18 @@ var Dinosaur = function() {
 	mod.speed = 0.05;
 	mod.sprite.image = "mainSprites_8";
 
-	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, dinosaurCollision);
+	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 28, 23, dinosaurCollision);
 
 
 	mod.update = function() {
-		collision.updateXY(mod.sprite.x, mod.sprite.y);
+		collision.updateXY(mod.sprite.x+2, mod.sprite.y+3);
 	};
 
 
 	dinosaurCollision.addCollision(wallCollision, {
 		general: function() {
-			console.log("col");
+			mod.sprite.x = mod.sprite.pX;
+			mod.sprite.y = mod.sprite.pY;
 		}
 	});
 
@@ -62,7 +63,7 @@ var Human = function(x, y) {
 	var collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
 
 	var wallGroup = new game.CollisionGroup();
-	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, wallGroup);
+	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 17, 24, wallGroup);
 
 
 	mod.walking = function(direction) {
@@ -79,7 +80,7 @@ var Human = function(x, y) {
 
 	mod.update = function() {
 		collision.updateXY(mod.sprite.x-16, mod.sprite.y-16);
-		wallTouch.updateXY(mod.sprite.x, mod.sprite.y);
+		wallTouch.updateXY(mod.sprite.x+8, mod.sprite.y+4);
 	};
 
 
@@ -95,7 +96,6 @@ var Human = function(x, y) {
 
 	wallGroup.addCollision(wallCollision, {
 		general: function() {
-			mod.stopped();
 			mod.sprite.x = mod.sprite.pX;
 			mod.sprite.y = mod.sprite.pY;
 		}
@@ -134,12 +134,13 @@ var Camera = function() {
 var Wall = function(x, y) {
 	var mod = Entity();
 
+
 	mod.sprite.x = x;
 	mod.sprite.y = y;
 	mod.sprite.still = true;
 	mod.sprite.image = "mainSprites_1";
 
-	game.CollisionBox(x, y, 32, 32, wallCollision);
+	new game.CollisionBox(x, y, 32, 32, wallCollision);
 
 
 	return mod;
