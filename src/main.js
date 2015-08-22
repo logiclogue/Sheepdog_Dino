@@ -23,7 +23,7 @@ var human = new Human();
 humanCollision.addCollision(dinosaurCollision, {
 	general: function() {
 		human.sprite.direction = (Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - human.sprite.y, dinosaur.sprite.x - human.sprite.x);
-		human.sprite.speed = 0.05;
+		human.sprite.speed = 0.07;
 		human.sprite.setAnimation("humanWalking", 100);
 
 		setTimeout(function() {

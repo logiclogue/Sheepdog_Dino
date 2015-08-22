@@ -11,7 +11,7 @@ var Entity = function() {
 var Dinosaur = function() {
 	var mod = Entity();
 
-	mod.speed = 0.02;
+	mod.speed = 0.05;
 	mod.sprite.image = "mainSprites_8";
 	mod.collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, dinosaurCollision);
 
