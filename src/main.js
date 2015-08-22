@@ -21,6 +21,23 @@ game.set.canvas("gameCanvas", gameWidth, gameHeight);
 var testRect = new game.Rect(0, 0, 32, 32, "#000000");
 
 
+for (var x = -10; x < 10; x++) {
+	for (var y = -10; y < 10; y++) {
+		var tile = new game.Rect(x*32, y*32, 32, 32, "#000000");
+
+		if (Math.random() > 0.5) {
+			tile.colour = "#FF0000";
+		} else {
+			tile.colour = "#00FF00";
+		}
+
+	}
+}
+
+testRect.order.front();
+console.log(testRect.order.get());
+
+
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {
 		testRect.direction = 0;
@@ -48,8 +65,11 @@ input.fnc = function(keysdown) {
 
 
 game.set.method(function() {
-	
+	// keys
 	input.run();
+
+	// camera
+	game.set.offset(-testRect.x+gameWidth/2-testRect.width/2, -testRect.y+gameHeight/2-testRect.height/2);
 
 });
 
