@@ -21,17 +21,6 @@ level.generate();
 var human = new Human();
 
 
-humanCollision.addCollision(dinosaurCollision, {
-	general: function() {
-		human.walking((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - human.sprite.y, dinosaur.sprite.x - human.sprite.x));
-
-		setTimeout(function() {
-			human.stopped();
-		}, 1000);
-	}
-});
-
-
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {
 		dinosaur.sprite.direction = 0;

@@ -51,5 +51,16 @@ var Human = function() {
 	};
 
 
+	humanCollision.addCollision(dinosaurCollision, {
+		general: function() {
+			mod.walking((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - mod.sprite.y, dinosaur.sprite.x - mod.sprite.x));
+
+			setTimeout(function() {
+				mod.stopped();
+			}, 1000);
+		}
+	});
+
+
 	return mod;
 };
