@@ -3,34 +3,25 @@
 
 
 var game = new ScrixelGame();
+var input = new Input();
 
 var gameWidth = 320;
 var gameHeight = 240;
-var keysdown = [];
 
 var keys = {
 	up: 87,
 	down: 83,
 	right: 68,
-	left: 65
+	left: 65,
+	m: 77
 };
 
 game.set.canvas("gameCanvas", gameWidth, gameHeight);
 
-
 var testRect = new game.Rect(0, 0, 32, 32, "#000000");
 
 
-document.addEventListener("keydown", function(e) {
-	keysdown[e.keyCode] = true;
-});
-
-document.addEventListener("keyup", function(e) {
-	keysdown[e.keyCode] = false;
-});
-
-
-game.set.method(function() {
+input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {
 		testRect.direction = 0;
 		testRect.speed = 0.01;
@@ -49,6 +40,17 @@ game.set.method(function() {
 	if (keysdown[keys.left]) {
 		testRect.direction = (Math.PI * 3) / 2;
 	}
+
+	if (keysdown[keys.m]) {
+		game.set.clear();
+	}
+};
+
+
+game.set.method(function() {
+	
+	input.run();
+
 });
 
 
