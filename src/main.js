@@ -27,31 +27,37 @@ input.fnc = function(keysdown) {
 	if (keysdown[keys.up] && keysdown[keys.right]) {
 		dinosaur.sprite.direction = Math.PI / 4;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurRight", 100);
 	}
 
 	else if (keysdown[keys.right] && keysdown[keys.down]) {
 		dinosaur.sprite.direction = (Math.PI * 3) / 4;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurRight", 100);
 	}
 
 	else if (keysdown[keys.down] && keysdown[keys.left]) {
 		dinosaur.sprite.direction = (Math.PI * 5) / 4;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurLeft", 100);
 	}
 
 	else if (keysdown[keys.left] && keysdown[keys.up]) {
 		dinosaur.sprite.direction = (Math.PI * 7) / 4;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurLeft", 100);
 	}
 
 	else if (keysdown[keys.up]) {
 		dinosaur.sprite.direction = 0;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurLeft", 100);
 	}
 
 	else if (keysdown[keys.down]) {
 		dinosaur.sprite.direction = Math.PI;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurRight", 100);
 	}
 
 	else if (keysdown[keys.right]) {
