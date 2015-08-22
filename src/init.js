@@ -8,5 +8,4 @@ game.load.spriteSheet("mainSprites", "res/sprite_sheet.png", 8, 8);
 game.animation.add("humanWalking", ["mainSprites_17", "mainSprites_16", "mainSprites_18"]);
 
 
-var humanCollision = new game.CollisionGroup();
 var dinosaurCollision = new game.CollisionGroup();

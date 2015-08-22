@@ -19,6 +19,7 @@ var keys = {
 level.generate();
 
 var human = new Human();
+//new Human();
 
 
 input.fnc = function(keysdown) {
