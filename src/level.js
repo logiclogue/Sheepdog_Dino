@@ -9,7 +9,7 @@ var Level = function() {
 				tile.y = y*32;
 
 				if (Math.random() > 0.5) {
-					tile.image = "mainSheet_0";
+					tile.image = "mainSprites_0";
 				}
 
 			}

@@ -13,6 +13,8 @@ var keys = {
 
 level.generate();
 
+new Human();
+
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {
 		testRect.direction = 0;
