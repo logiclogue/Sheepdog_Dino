@@ -1,5 +1,6 @@
 // Copyright Jordan Lord 2015
 // Ludum Dare 33 game jam entry
+var input = new Input();
 
 
 input.fnc = function(keysdown) {

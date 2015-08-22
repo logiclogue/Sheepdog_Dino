@@ -1,5 +1,4 @@
 var game = new ScrixelGame();
-var input = new Input();
 
 var gameWidth = 320;
 var gameHeight = 240;
@@ -31,4 +30,3 @@ for (var x = -10; x < 10; x++) {
 }
 
 testRect.order.front();
-console.log(testRect.order.get());
