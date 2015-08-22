@@ -15,7 +15,7 @@ var Level = function() {
 			}
 		}
 
-		testRect.order.front();
+		dinosaur.sprite.order.front();
 
 	}
 

@@ -1,5 +1,10 @@
 // Copyright Jordan Lord 2015
 // Ludum Dare 33 game jam entry
+
+
+var dinosaur = new Dinosaur();
+
+
 var input = new Input();
 var level = new Level();
 
@@ -13,26 +18,33 @@ var keys = {
 
 level.generate();
 
-new Human();
+var human = new Human();
+
+humanCollision.addCollision(dinosaurCollision, {
+	general: function() {
+		human.sprite.direction = Math.PI;
+		human.sprite.speed = 0.05;
+	}
+});
 
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {
-		testRect.direction = 0;
-		testRect.speed = 0.01;
+		dinosaur.sprite.direction = 0;
+		dinosaur.sprite.speed = 0.01;
 	}
 
 	if (keysdown[keys.down]) {
-		testRect.direction = Math.PI;
-		testRect.speed = 0.01;
+		dinosaur.sprite.direction = Math.PI;
+		dinosaur.sprite.speed = 0.01;
 	}
 
 	if (keysdown[keys.right]) {
-		testRect.direction = Math.PI / 2;
-		testRect.speed = 0.01;
+		dinosaur.sprite.direction = Math.PI / 2;
+		dinosaur.sprite.speed = 0.01;
 	}
 
 	if (keysdown[keys.left]) {
-		testRect.direction = (Math.PI * 3) / 2;
+		dinosaur.sprite.direction = (Math.PI * 3) / 2;
 	}
 
 	if (keysdown[keys.m]) {
@@ -46,7 +58,11 @@ game.set.method(function() {
 	input.run();
 
 	// camera
-	game.set.offset(-testRect.x+gameWidth/2-testRect.width/2, -testRect.y+gameHeight/2-testRect.height/2);
+	game.set.offset(Math.round(-dinosaur.sprite.x+gameWidth/2-16), Math.round(-dinosaur.sprite.y+gameHeight/2-16));
+
+	// update dinosaur collision position
+	dinosaur.collision.updateXY(dinosaur.sprite.x, dinosaur.sprite.y);
+
 
 });
 

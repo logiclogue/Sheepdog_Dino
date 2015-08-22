@@ -1,19 +1,34 @@
 var Entity = function() {
+	var mod = {};
 
-	this.sprite = new game.Sprite();
+	mod.sprite = new game.Sprite();
+	mod.sprite.order.front();
 
+	return mod;
+};
+
+
+var Dinosaur = function() {
+	var mod = Entity();
+
+	mod.sprite.image = "mainSprites_0";
+	mod.collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, dinosaurCollision);
+
+	return mod;
 };
 
 
 var Human = function() {
+	var mod = Entity();
 
-	this.sprite.image = "mainSprites_16";
-	this.sprite.setAnimation("humanWalking", 100);
-	this.sprite.direction = Math.PI;
-	this.sprite.speed = 0.05;
+	mod.sprite.image = "mainSprites_16";
+	mod.sprite.setAnimation("humanWalking", 100);
+	mod.sprite.x = 64;
+	mod.sprite.y = 64;
 
-	this.sprite.order.front();
+	mod.sprite.order.front();
 
+	mod.collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, humanCollision);
+
+	return mod;
 };
-
-Human.prototype = new Entity();
