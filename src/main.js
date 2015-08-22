@@ -2,11 +2,14 @@
 // Ludum Dare 33 game jam entry
 
 
-var dinosaur = new Dinosaur();
-
-
 var input = new Input();
 var level = new Level();
+
+var dinosaur = new Dinosaur();
+var camera = new Camera();
+
+camera.following = dinosaur;
+
 
 var keys = {
 	up: 87,
@@ -15,6 +18,7 @@ var keys = {
 	left: 65,
 	m: 77
 };
+
 
 level.generate();
 
@@ -63,11 +67,6 @@ input.fnc = function(keysdown) {
 	else {
 		dinosaur.sprite.speed = 0;
 	}
-
-
-	if (keysdown[keys.m]) {
-		//dinosaur.sprite.speed = 0;
-	}
 };
 
 
@@ -75,11 +74,11 @@ game.set.method(function() {
 	// keys
 	input.run();
 
-	// camera
-	game.set.offset(Math.round(-dinosaur.sprite.x+gameWidth/2-16), Math.round(-dinosaur.sprite.y+gameHeight/2-16));
-
 	// update entities
 	entities.update();
+
+	// camera
+	game.set.offset(Math.round(-camera.sprite.x+gameWidth/2-16), Math.round(-camera.sprite.y+gameHeight/2-16));
 
 });
 
