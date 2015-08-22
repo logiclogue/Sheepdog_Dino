@@ -23,14 +23,10 @@ var human = new Human();
 
 humanCollision.addCollision(dinosaurCollision, {
 	general: function() {
-		human.sprite.direction = (Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - human.sprite.y, dinosaur.sprite.x - human.sprite.x);
-		human.sprite.speed = human.speed;
-		human.sprite.setAnimation("humanWalking", 100);
+		human.walking((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - human.sprite.y, dinosaur.sprite.x - human.sprite.x));
 
 		setTimeout(function() {
-			human.sprite.speed = 0;
-			human.sprite.animation.name = "";
-			human.sprite.image = "mainSprites_16";
+			human.stopped();
 		}, 1000);
 	}
 });
