@@ -22,10 +22,18 @@ var human = new Human();
 
 humanCollision.addCollision(dinosaurCollision, {
 	general: function() {
-		human.sprite.direction = Math.PI;
+		human.sprite.direction = (Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - human.sprite.y, dinosaur.sprite.x - human.sprite.x);
 		human.sprite.speed = 0.05;
+		human.sprite.setAnimation("humanWalking", 100);
+
+		setTimeout(function() {
+			human.sprite.speed = 0;
+			human.sprite.animation.name = "";
+			human.sprite.image = "mainSprites_16";
+		}, 1000);
 	}
 });
+
 
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {
@@ -70,7 +78,7 @@ input.fnc = function(keysdown) {
 
 
 	if (keysdown[keys.m]) {
-		game.set.clear();
+		dinosaur.sprite.speed = 0;
 	}
 };
 
@@ -84,6 +92,8 @@ game.set.method(function() {
 
 	// update dinosaur collision position
 	dinosaur.collision.updateXY(dinosaur.sprite.x, dinosaur.sprite.y);
+	// update human collision position
+	human.collision.updateXY(human.sprite.x, human.sprite.y);
 
 
 });
