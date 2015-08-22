@@ -35,7 +35,8 @@ var Human = function() {
 
 	mod.sprite.order.front();
 
-	mod.collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, humanCollision);
+	var sensor =  new game.CollisionGroup();
+	mod.collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
 
 
 	mod.walking = function(direction) {
@@ -51,7 +52,7 @@ var Human = function() {
 	};
 
 
-	humanCollision.addCollision(dinosaurCollision, {
+	sensor.addCollision(dinosaurCollision, {
 		general: function() {
 			mod.walking((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - mod.sprite.y, dinosaur.sprite.x - mod.sprite.x));
 
