@@ -1,6 +1,7 @@
 // Copyright Jordan Lord 2015
 // Ludum Dare 33 game jam entry
 var input = new Input();
+var level = new Level();
 
 var keys = {
 	up: 87,
@@ -9,6 +10,8 @@ var keys = {
 	left: 65,
 	m: 77
 };
+
+level.generate();
 
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {
