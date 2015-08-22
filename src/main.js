@@ -78,6 +78,8 @@ input.fnc = function(keysdown) {
 	}
 };
 
+dinosaur.sprite.order.front();
+
 
 game.set.method(function() {
 	// keys

@@ -27,11 +27,11 @@ var Dinosaur = function() {
 	mod.sprite.image = "mainSprites_8";
 	mod.sprite.setAnimation("dinosaurLeft", 100);
 
-	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 21, dinosaurCollision);
+	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 11, 9, dinosaurCollision);
 
 
 	mod.update = function() {
-		collision.updateXY(mod.sprite.x, mod.sprite.y);
+		collision.updateXY(mod.sprite.x+13, mod.sprite.y+12);
 	};
 
 
@@ -64,7 +64,7 @@ var Human = function(x, y) {
 	var collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
 
 	var wallGroup = new game.CollisionGroup();
-	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 17, 24, wallGroup);
+	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 7, 9, wallGroup);
 
 
 	mod.walking = function(direction) {
@@ -81,7 +81,7 @@ var Human = function(x, y) {
 
 	mod.update = function() {
 		collision.updateXY(mod.sprite.x-16, mod.sprite.y-16);
-		wallTouch.updateXY(mod.sprite.x+8, mod.sprite.y+4);
+		wallTouch.updateXY(mod.sprite.x+13, mod.sprite.y+19);
 	};
 
 
