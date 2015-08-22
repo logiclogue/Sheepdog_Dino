@@ -9,3 +9,4 @@ game.animation.add("humanWalking", ["mainSprites_17", "mainSprites_16", "mainSpr
 
 
 var dinosaurCollision = game.CollisionGroup();
+var wallCollision = game.CollisionGroup();
