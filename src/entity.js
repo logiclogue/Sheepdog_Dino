@@ -22,13 +22,15 @@ var Dinosaur = function() {
 var Human = function() {
 	var mod = Entity();
 
+	mod.speed = 0.07;
+
 	mod.sprite.image = "mainSprites_16";
 	mod.sprite.x = 64;
 	mod.sprite.y = 64;
 
 	mod.sprite.order.front();
 
-	mod.collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, humanCollision);
+	mod.collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, humanCollision);
 
 	mod.moving = function() {
 
