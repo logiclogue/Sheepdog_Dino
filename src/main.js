@@ -18,9 +18,6 @@ var keys = {
 
 level.generate();
 
-var human = new Human();
-//new Human();
-
 
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up] && keysdown[keys.right]) {
@@ -81,11 +78,8 @@ game.set.method(function() {
 	// camera
 	game.set.offset(Math.round(-dinosaur.sprite.x+gameWidth/2-16), Math.round(-dinosaur.sprite.y+gameHeight/2-16));
 
-	// update dinosaur collision position
-	dinosaur.collision.updateXY(dinosaur.sprite.x, dinosaur.sprite.y);
-	// update human collision position
-	human.collision.updateXY(human.sprite.x-16, human.sprite.y-16);
-
+	// update entities
+	entities.update();
 
 });
 

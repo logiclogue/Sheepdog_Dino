@@ -10,12 +10,14 @@ var Level = function() {
 
 				if (Math.random() > 0.5) {
 					tile.image = "mainSprites_0";
+				} else {
+					Human(x*32, y*32);
 				}
+
+				tile.order.back();
 
 			}
 		}
-
-		dinosaur.sprite.order.front();
 
 	}
 

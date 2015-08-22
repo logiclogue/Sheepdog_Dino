@@ -6,6 +6,9 @@ var Entity = function() {
 	mod.sprite = new game.Sprite();
 	mod.sprite.order.front();
 
+
+	mod.update = function() {};
+
 	mod.destroy = function() {
 		mod.sprite.destroy();
 	};
@@ -21,31 +24,37 @@ var Dinosaur = function() {
 
 	mod.speed = 0.05;
 	mod.sprite.image = "mainSprites_8";
-	mod.collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, dinosaurCollision);
+
+	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, dinosaurCollision);
+
+
+	mod.update = function() {
+		collision.updateXY(mod.sprite.x, mod.sprite.y);
+	};
 
 
 	return mod;
 };
 
 
-var Human = function() {
+var Human = function(x, y) {
 	var mod = Entity();
 
 
 	mod.speed = 0.07;
 
 	mod.sprite.image = "mainSprites_16";
-	mod.sprite.x = 64;
-	mod.sprite.y = 64;
+	mod.sprite.x = x || 0;
+	mod.sprite.y = y || 0;
 
 	mod.sprite.order.front();
 
 	var sensor =  new game.CollisionGroup();
-	mod.collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
+	var collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
 
 
 	mod.walking = function(direction) {
-		mod.sprite.speed = human.speed;
+		mod.sprite.speed = mod.speed;
 		mod.sprite.setAnimation("humanWalking", 50);
 		mod.sprite.direction = direction;
 	};
@@ -54,6 +63,10 @@ var Human = function() {
 		mod.sprite.speed = 0;
 		mod.sprite.animation.name = "";
 		mod.sprite.image = "mainSprites_16";
+	};
+
+	mod.update = function() {
+		collision.updateXY(mod.sprite.x-16, mod.sprite.y-16);
 	};
 
 
@@ -77,6 +90,12 @@ var entities = (function() {
 
 
 	mod.list = [];
+
+	mod.update = function() {
+		for (var i = 0; i < mod.list.length; i++) {
+			mod.list[i].update();
+		}
+	};
 
 	mod.destroy = function() {
 		for (var i = 0; i < mod.list.length; i++) {
