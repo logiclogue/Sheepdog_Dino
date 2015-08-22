@@ -2,6 +2,13 @@
 // Ludum Dare 33 game jam entry
 var input = new Input();
 
+var keys = {
+	up: 87,
+	down: 83,
+	right: 68,
+	left: 65,
+	m: 77
+};
 
 input.fnc = function(keysdown) {
 	if (keysdown[keys.up]) {

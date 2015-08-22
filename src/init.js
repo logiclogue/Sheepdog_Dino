@@ -3,14 +3,6 @@ var game = new ScrixelGame();
 var gameWidth = 320;
 var gameHeight = 240;
 
-var keys = {
-	up: 87,
-	down: 83,
-	right: 68,
-	left: 65,
-	m: 77
-};
-
 game.set.canvas("gameCanvas", gameWidth, gameHeight);
 
 var testRect = new game.Rect(0, 0, 32, 32, "#000000");
