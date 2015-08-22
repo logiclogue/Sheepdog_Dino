@@ -57,15 +57,18 @@ input.fnc = function(keysdown) {
 	else if (keysdown[keys.right]) {
 		dinosaur.sprite.direction = Math.PI / 2;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurRight", 100);
 	}
 
 	else if (keysdown[keys.left]) {
 		dinosaur.sprite.direction = (Math.PI * 3) / 2;
 		dinosaur.sprite.speed = dinosaur.speed;
+		dinosaur.sprite.setAnimation("dinosaurLeft", 100);
 	}
 
 	else {
 		dinosaur.sprite.speed = 0;
+		dinosaur.sprite.setAnimation("");
 	}
 };
 

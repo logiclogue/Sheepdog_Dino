@@ -25,12 +25,13 @@ var Dinosaur = function() {
 
 	mod.speed = 0.05;
 	mod.sprite.image = "mainSprites_8";
+	mod.sprite.setAnimation("dinosaurLeft", 100);
 
-	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 28, 23, dinosaurCollision);
+	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 21, dinosaurCollision);
 
 
 	mod.update = function() {
-		collision.updateXY(mod.sprite.x+2, mod.sprite.y+3);
+		collision.updateXY(mod.sprite.x, mod.sprite.y);
 	};
 
 
