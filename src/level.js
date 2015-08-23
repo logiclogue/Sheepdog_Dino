@@ -6,8 +6,9 @@ var Level = function() {
 			for (var y = -10; y < 10; y++) {
 				
 				if (Math.random() > 0.1) {
+					var human;
 					if (Math.random() > 0.95) {
-						Human(x*32, y*32);
+						human = Human(x*32, y*32);
 					}
 
 					var tile = new game.Sprite();
@@ -18,9 +19,9 @@ var Level = function() {
 					tile.order.back();
 				} else {
 					if (Math.random() > 0.5) {
-						Wall(x*32, y*32);
+						Wall(x*32, y*32).sprite.order.back();
 					} else {
-						Hole(x*32, y*32);
+						Hole(x*32, y*32).sprite.order.back();
 					}
 				}
 

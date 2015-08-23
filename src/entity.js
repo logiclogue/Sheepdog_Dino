@@ -46,7 +46,7 @@ var Dinosaur = function() {
 
 		setTimeout(function() {
 			mod.destroy();
-		}, 100);
+		}, 200);
 	}
 
 
