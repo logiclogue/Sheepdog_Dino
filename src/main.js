@@ -38,7 +38,9 @@ game.set.method(function() {
 	entities.update();
 
 	// camera
-	game.set.offset(Math.round(-camera.sprite.x+gameWidth/2-16), Math.round(-camera.sprite.y+gameHeight/2-16));
+	xOffset = Math.round(-camera.sprite.x+gameWidth/2-16);
+	yOffset = Math.round(-camera.sprite.y+gameHeight/2-16)
+	game.set.offset(xOffset, yOffset);
 
 });
 
