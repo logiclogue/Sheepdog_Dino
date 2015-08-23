@@ -49,9 +49,12 @@ var Level = function() {
 					case "000000":
 						Hole(x*32, y*32).sprite.order.back();
 						break;
-					// wall
+					// wall facing
 					case "ff0000":
-						Wall(x*32, y*32).sprite.order.back();
+						Wall(x*32, y*32, 1).sprite.order.back();
+						break;
+					case "ee0000":
+						Wall(x*32, y*32, 2).sprite.order.back();
 						break;
 					// human
 					case "ffff00":
