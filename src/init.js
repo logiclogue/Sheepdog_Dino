@@ -15,6 +15,7 @@ game.animation.add("goal", ["mainSprites_4", "mainSprites_5", "mainSprites_6", "
 var dinosaurCollision = game.CollisionGroup();
 var wallCollision = game.CollisionGroup();
 var holeCollision = game.CollisionGroup();
+var goalCollision = game.CollisionGroup();
 
 
 function componentToHex(c) {

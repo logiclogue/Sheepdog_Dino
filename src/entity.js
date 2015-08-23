@@ -243,6 +243,21 @@ var Human = function(x, y) {
 		}
 	});
 
+	// enters goal
+	wallGroup.addCollision(goalCollision, {
+		all: function(e) {
+			mod.sprite.setAnimation();
+			mod.sprite.image = stillImage;
+			mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
+			mod.sprite.speed = 0.02;
+			mod.controller = function() {};
+
+			setTimeout(function() {
+				mod.destroy();
+			}, 1000);
+		}
+	});
+
 
 	return mod;
 };
@@ -315,6 +330,8 @@ var Goal = function(x, y) {
 	mod.sprite.y = y;
 	mod.sprite.still = true;
 	mod.sprite.setAnimation("goal", 100);
+
+	new game.CollisionBox(x, y, 32, 32, goalCollision);
 
 
 	return mod;
