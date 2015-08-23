@@ -22,14 +22,21 @@ var keys = {
 
 level.generate();
 
-var text = Text("jordan");
-
 
 input.fnc = function(e) {
 	dinosaur.controller(e);
 };
 
 dinosaur.sprite.order.front();
+
+//game.Rect(-100, -100, 1000, 1000, "#000000");
+var menu = Menu(0, 0, ["play", "credit", "exit"], [function() {
+	console.log("you selected play!");
+}]);
+
+setTimeout(function() {
+	menu.select();
+}, 1000);
 
 
 game.set.method(function() {
@@ -44,7 +51,7 @@ game.set.method(function() {
 	yOffset = Math.round(-camera.sprite.y+gameHeight/2-16)
 	game.set.offset(xOffset, yOffset);
 
-	text.updateXY(dinosaur.sprite.x-8, dinosaur.sprite.y-16);
+	menu.updateXY(-xOffset, -yOffset);
 
 });
 

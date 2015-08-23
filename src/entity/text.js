@@ -35,6 +35,7 @@ var Text = function(text, x, y) {
 				letter[i] = game.Sprite();
 				letter[i].image = "font_" + index;
 				letter[i].x = x + i * 8;
+				letter[i].y = y;
 				letter[i].still = true;
 			}
 		}
