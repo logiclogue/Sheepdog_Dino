@@ -138,7 +138,7 @@ var Human = function(x, y) {
 
 
 	var wallGroup = new game.CollisionGroup();
-	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 7, 9, wallGroup);
+	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 7, 3, wallGroup);
 	var stillImage = "mainSprites_16";
 	var fallingImage = "mainSprites_19";
 	var isRunning = false;
@@ -191,7 +191,7 @@ var Human = function(x, y) {
 	};
 
 	mod.update = function() {
-		wallTouch.updateXY(mod.sprite.x+13, mod.sprite.y+19);
+		wallTouch.updateXY(mod.sprite.x+13, mod.sprite.y+26);
 		sensor();
 	};
 
@@ -233,6 +233,13 @@ var Human = function(x, y) {
 			setTimeout(function() {
 				mod.destroy();
 			}, 100);
+		}
+	});
+
+	// eaten by dinosaur
+	wallGroup.addCollision(dinosaurCollision, {
+		general: function() {
+			mod.destroy();
 		}
 	});
 
