@@ -23,16 +23,26 @@ var Dinosaur = function() {
 	var mod = Entity();
 
 
-	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 11, 9, dinosaurCollision);
+	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 16, 4, dinosaurCollision);
 	var animationName = "dinosaurLeft";
 	var animationSpeed = 100;
 	var leftImage = "mainSprites_8";
 	var rightImage = "mainSprites_11";
+	var fallingImage = "mainSprites_14";
 
 	mod.speed = 0.05;
 	mod.sprite.image = leftImage;
 	mod.sprite.setAnimation(animationName, animationSpeed);
 
+
+	function fall(argument) {
+		mod.sprite.setAnimation();
+		mod.sprite.image = fallingImage;
+
+		setTimeout(function() {
+			mod.destroy();
+		}, 200);
+	}
 
 	// more compact function to move the dinosaur in a particular direction
 	function move(direction) {
@@ -53,7 +63,7 @@ var Dinosaur = function() {
 
 
 	mod.update = function() {
-		collision.updateXY(mod.sprite.x+13, mod.sprite.y+12);
+		collision.updateXY(mod.sprite.x+8, mod.sprite.y+17);
 	};
 
 	mod.controller = function(keysdown) {
@@ -93,11 +103,21 @@ var Dinosaur = function() {
 		}
 	};
 
+	mod.destroy = function() {
+		mod.sprite.destroy();
+	};
+
 
 	dinosaurCollision.addCollision(wallCollision, {
 		general: function() {
 			mod.sprite.x = mod.sprite.pX;
 			mod.sprite.y = mod.sprite.pY;
+		}
+	});
+
+	dinosaurCollision.addCollision(holeCollision, {
+		general: function() {
+			fall();
 		}
 	});
 
@@ -111,6 +131,15 @@ var Human = function(x, y) {
 	var mod = Entity();
 
 
+	var sensor = new game.CollisionGroup();
+	var collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
+
+	var wallGroup = new game.CollisionGroup();
+	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 7, 9, wallGroup);
+
+	var stillImage = "mainSprites_16";
+	var fallingImage = "mainSprites_19";
+
 	mod.speed = 0.07;
 
 	mod.sprite.image = "mainSprites_16";
@@ -119,12 +148,15 @@ var Human = function(x, y) {
 
 	mod.sprite.order.front();
 
-	var sensor = new game.CollisionGroup();
-	var collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
 
-	var wallGroup = new game.CollisionGroup();
-	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 7, 9, wallGroup);
+	function fall() {
+		mod.sprite.animation.name = "";
+		mod.sprite.image = fallingImage;
 
+		setTimeout(function() {
+			mod.destroy();
+		}, 200);
+	};
 
 	mod.walking = function(direction) {
 		mod.sprite.speed = mod.speed;
@@ -135,12 +167,18 @@ var Human = function(x, y) {
 	mod.stopped = function() {
 		mod.sprite.speed = 0;
 		mod.sprite.animation.name = "";
-		mod.sprite.image = "mainSprites_16";
+		mod.sprite.image = stillImage;
 	};
 
 	mod.update = function() {
 		collision.updateXY(mod.sprite.x-16, mod.sprite.y-16);
 		wallTouch.updateXY(mod.sprite.x+13, mod.sprite.y+19);
+	};
+
+	mod.destroy = function() {
+		wallGroup.destroy();
+		sensor.destroy();
+		mod.sprite.destroy();
 	};
 
 
@@ -163,7 +201,7 @@ var Human = function(x, y) {
 
 	wallGroup.addCollision(holeCollision, {
 		general: function() {
-			mod.destroy();
+			fall();
 		}
 	});
 
