@@ -62,7 +62,7 @@ var Level = function() {
 						Human(x*32, y*32);
 						break;
 					case "ff00ff":
-						Goal(x*32, y*32);
+						Goal(x*32, y*32).sprite.order.back();
 						break;
 					// floor tile
 					default:
