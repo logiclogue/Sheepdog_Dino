@@ -23,7 +23,9 @@ var keys = {
 level.generate();
 
 
-input.fnc = dinosaur.controller;
+input.fnc = function(e) {
+	dinosaur.controller(e);
+};
 
 dinosaur.sprite.order.front();
 

@@ -35,13 +35,18 @@ var Dinosaur = function() {
 	mod.sprite.setAnimation(animationName, animationSpeed);
 
 
-	function fall(argument) {
+	function fall(e) {
 		mod.sprite.setAnimation();
 		mod.sprite.image = fallingImage;
+		mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
+		mod.sprite.speed = 0.1;
+		collision.w = 0;
+		collision.h = 0;
+		mod.controller = function() {};
 
 		setTimeout(function() {
 			mod.destroy();
-		}, 200);
+		}, 100);
 	}
 
 	// more compact function to move the dinosaur in a particular direction
@@ -116,8 +121,8 @@ var Dinosaur = function() {
 	});
 
 	dinosaurCollision.addCollision(holeCollision, {
-		general: function() {
-			fall();
+		all: function(e) {
+			fall(e);
 		}
 	});
 
@@ -200,8 +205,18 @@ var Human = function(x, y) {
 	});
 
 	wallGroup.addCollision(holeCollision, {
-		general: function() {
-			fall();
+		all: function(e) {
+			mod.sprite.setAnimation();
+			mod.sprite.image = fallingImage;
+			mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
+			mod.sprite.speed = 0.1;
+			collision.w = 0;
+			collision.h = 0;
+			mod.controller = function() {};
+
+			setTimeout(function() {
+				mod.destroy();
+			}, 100);
 		}
 	});
 
