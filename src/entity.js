@@ -23,7 +23,7 @@ var Dinosaur = function() {
 	var mod = Entity();
 
 
-	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 16, 4, dinosaurCollision);
+	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 6, 3, dinosaurCollision);
 	var animationName = "dinosaurLeft";
 	var animationSpeed = 100;
 	var leftImage = "mainSprites_8";
@@ -69,7 +69,7 @@ var Dinosaur = function() {
 
 
 	mod.update = function() {
-		collision.updateXY(mod.sprite.x+8, mod.sprite.y+17);
+		collision.updateXY(mod.sprite.x+13, mod.sprite.y+18);
 	};
 
 	mod.controller = function(keysdown) {
