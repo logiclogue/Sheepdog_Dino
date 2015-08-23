@@ -22,6 +22,8 @@ var keys = {
 
 level.generate();
 
+var text = Text("jordan");
+
 
 input.fnc = function(e) {
 	dinosaur.controller(e);
@@ -41,6 +43,8 @@ game.set.method(function() {
 	xOffset = Math.round(-camera.sprite.x+gameWidth/2-16);
 	yOffset = Math.round(-camera.sprite.y+gameHeight/2-16)
 	game.set.offset(xOffset, yOffset);
+
+	text.updateXY(dinosaur.sprite.x-8, dinosaur.sprite.y-16);
 
 });
 

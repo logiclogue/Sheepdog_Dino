@@ -71,8 +71,6 @@ var Level = function() {
 				}
 			}
 
-			Text("jordan", 0, 0);
-
 			dinosaur.sprite.order.front();
 		});
 
