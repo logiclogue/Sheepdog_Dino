@@ -13,3 +13,13 @@ game.animation.add("dinosaurRight", ["mainSprites_12", "mainSprites_11", "mainSp
 var dinosaurCollision = game.CollisionGroup();
 var wallCollision = game.CollisionGroup();
 var holeCollision = game.CollisionGroup();
+
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
+}

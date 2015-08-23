@@ -171,7 +171,6 @@ var Human = function(x, y) {
 				setTimeout(function() {
 					mod.stopped();
 					isRunning = false;
-					console.log("here");
 				}, 1000);
 			}
 		}
