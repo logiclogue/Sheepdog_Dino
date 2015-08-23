@@ -30,7 +30,7 @@ var Level = function() {
 
 	this.generate = function() {
 
-		imgToData("res/level_1.png", function(map, width, height) {
+		imgToData("res/level/level_1.png", function(map, width, height) {
 			for (var i = 0; i < map.data.length; i += 4) {
 				var index = i / 4;
 				var y = Math.floor(index / width);
