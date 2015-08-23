@@ -139,12 +139,11 @@ var Human = function(x, y) {
 
 	var wallGroup = new game.CollisionGroup();
 	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 7, 9, wallGroup);
-
 	var stillImage = "mainSprites_16";
 	var fallingImage = "mainSprites_19";
+	var isRunning = false;
 
 	mod.speed = 0.07;
-
 	mod.sprite.image = "mainSprites_16";
 	mod.sprite.x = x || 0;
 	mod.sprite.y = y || 0;
@@ -163,18 +162,25 @@ var Human = function(x, y) {
 
 	function sensor() {
 		if (Math.sqrt(Math.pow(dinosaur.sprite.x - mod.sprite.x, 2) + Math.pow(dinosaur.sprite.y - mod.sprite.y, 2)) < 64) {
-			mod.walking((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - mod.sprite.y, dinosaur.sprite.x - mod.sprite.x));
+			mod.running((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - mod.sprite.y, dinosaur.sprite.x - mod.sprite.x));
 
-			setTimeout(function() {
-				mod.stopped();
-			}, 1000);
+			// if not running then run
+			if (!isRunning) {
+				isRunning = true;
+
+				setTimeout(function() {
+					mod.stopped();
+					isRunning = false;
+					console.log("here");
+				}, 1000);
+			}
 		}
 	}
 
 
-	mod.walking = function(direction) {
+	mod.running = function(direction) {
 		mod.sprite.speed = mod.speed;
-		mod.sprite.setAnimation("humanWalking", 50);
+		mod.sprite.setAnimation("humanRunning", 50);
 		mod.sprite.direction = direction;
 	};
 
