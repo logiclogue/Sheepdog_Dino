@@ -49,6 +49,7 @@ var Dinosaur = function() {
 		}, 100);
 	}
 
+
 	// more compact function to move the dinosaur in a particular direction
 	function move(direction) {
 		if (direction == Math.PI || direction == 0) {
@@ -136,9 +137,6 @@ var Human = function(x, y) {
 	var mod = Entity();
 
 
-	var sensor = new game.CollisionGroup();
-	var collision = new game.CollisionBox(mod.sprite.x-32, mod.sprite.y-32, 64, 64, sensor);
-
 	var wallGroup = new game.CollisionGroup();
 	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 7, 9, wallGroup);
 
@@ -161,7 +159,18 @@ var Human = function(x, y) {
 		setTimeout(function() {
 			mod.destroy();
 		}, 200);
-	};
+	}
+
+	function sensor() {
+		if (Math.sqrt(Math.pow(dinosaur.sprite.x - mod.sprite.x, 2) + Math.pow(dinosaur.sprite.y - mod.sprite.y, 2)) < 64) {
+			mod.walking((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - mod.sprite.y, dinosaur.sprite.x - mod.sprite.x));
+
+			setTimeout(function() {
+				mod.stopped();
+			}, 1000);
+		}
+	}
+
 
 	mod.walking = function(direction) {
 		mod.sprite.speed = mod.speed;
@@ -176,26 +185,17 @@ var Human = function(x, y) {
 	};
 
 	mod.update = function() {
-		collision.updateXY(mod.sprite.x-16, mod.sprite.y-16);
+		//collision.updateXY(mod.sprite.x-16, mod.sprite.y-16);
 		wallTouch.updateXY(mod.sprite.x+13, mod.sprite.y+19);
+
+		sensor();
 	};
 
 	mod.destroy = function() {
 		wallGroup.destroy();
-		sensor.destroy();
 		mod.sprite.destroy();
 	};
 
-
-	sensor.addCollision(dinosaurCollision, {
-		general: function() {
-			mod.walking((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - mod.sprite.y, dinosaur.sprite.x - mod.sprite.x));
-
-			setTimeout(function() {
-				mod.stopped();
-			}, 1000);
-		}
-	});
 
 	wallGroup.addCollision(wallCollision, {
 		general: function() {
@@ -210,8 +210,6 @@ var Human = function(x, y) {
 			mod.sprite.image = fallingImage;
 			mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
 			mod.sprite.speed = 0.1;
-			collision.w = 0;
-			collision.h = 0;
 			mod.controller = function() {};
 
 			setTimeout(function() {
