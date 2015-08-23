@@ -9,6 +9,7 @@ game.load.spriteSheet("mainSprites", "res/sprite_sheet.png", 8, 8);
 game.animation.add("humanRunning", ["mainSprites_17", "mainSprites_16", "mainSprites_18"]);
 game.animation.add("dinosaurLeft", ["mainSprites_9", "mainSprites_8", "mainSprites_10", "mainSprites_8"]);
 game.animation.add("dinosaurRight", ["mainSprites_12", "mainSprites_11", "mainSprites_13", "mainSprites_11"]);
+game.animation.add("goal", ["mainSprites_4", "mainSprites_5", "mainSprites_6", "mainSprites_7"]);
 
 
 var dinosaurCollision = game.CollisionGroup();

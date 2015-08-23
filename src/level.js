@@ -61,12 +61,17 @@ var Level = function() {
 						drawTile(x, y);
 						Human(x*32, y*32);
 						break;
+					case "ff00ff":
+						Goal(x*32, y*32);
+						break;
 					// floor tile
 					default:
 						drawTile(x, y);
 						break;
 				}
 			}
+
+			dinosaur.sprite.order.front();
 		});
 
 	}
