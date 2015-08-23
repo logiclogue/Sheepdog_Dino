@@ -160,8 +160,9 @@ var Human = function(x, y) {
 		}, 200);
 	}
 
+	// sensing the dinosaur
 	function sensor() {
-		if (Math.sqrt(Math.pow(dinosaur.sprite.x - mod.sprite.x, 2) + Math.pow(dinosaur.sprite.y - mod.sprite.y, 2)) < 64) {
+		if (Math.sqrt(Math.pow(dinosaur.sprite.x - mod.sprite.x, 2) + Math.pow(dinosaur.sprite.y - mod.sprite.y, 2)) < 48) {
 			mod.running((Math.PI + Math.PI / 2) + Math.atan2(dinosaur.sprite.y - mod.sprite.y, dinosaur.sprite.x - mod.sprite.x));
 
 			// if not running then run
@@ -171,7 +172,7 @@ var Human = function(x, y) {
 				setTimeout(function() {
 					mod.stopped();
 					isRunning = false;
-				}, 1000);
+				}, 500);
 			}
 		}
 	}
@@ -190,9 +191,7 @@ var Human = function(x, y) {
 	};
 
 	mod.update = function() {
-		//collision.updateXY(mod.sprite.x-16, mod.sprite.y-16);
 		wallTouch.updateXY(mod.sprite.x+13, mod.sprite.y+19);
-
 		sensor();
 	};
 
@@ -202,13 +201,27 @@ var Human = function(x, y) {
 	};
 
 
+	// colliding with a wall
 	wallGroup.addCollision(wallCollision, {
-		general: function() {
+		left: function() {
 			mod.sprite.x = mod.sprite.pX;
+			wallTouch.x = wallTouch.pX;
+		},
+		right: function() {
+			mod.sprite.x = mod.sprite.pX;
+			wallTouch.x = wallTouch.pX;
+		},
+		top: function() {
 			mod.sprite.y = mod.sprite.pY;
+			wallTouch.y = wallTouch.pY;
+		},
+		bottom: function() {
+			mod.sprite.y = mod.sprite.pY;
+			wallTouch.y = wallTouch.pY;
 		}
 	});
 
+	// falling down hole
 	wallGroup.addCollision(holeCollision, {
 		all: function(e) {
 			mod.sprite.setAnimation();
