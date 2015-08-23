@@ -17,7 +17,11 @@ var Level = function() {
 					tile.y = y*32;
 					tile.order.back();
 				} else {
-					var wall = Wall(x*32, y*32);
+					if (Math.random() > 0.5) {
+						Wall(x*32, y*32);
+					} else {
+						Hole(x*32, y*32);
+					}
 				}
 
 			}

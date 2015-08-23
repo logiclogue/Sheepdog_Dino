@@ -12,3 +12,4 @@ game.animation.add("dinosaurRight", ["mainSprites_12", "mainSprites_11", "mainSp
 
 var dinosaurCollision = game.CollisionGroup();
 var wallCollision = game.CollisionGroup();
+var holeCollision = game.CollisionGroup();
