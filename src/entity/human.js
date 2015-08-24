@@ -101,13 +101,6 @@ var Human = function(x, y) {
 		}
 	});
 
-	// eaten by dinosaur
-	wallGroup.addCollision(dinosaurCollision, {
-		general: function() {
-			mod.destroy();
-		}
-	});
-
 	// enters goal
 	wallGroup.addCollision(goalCollision, {
 		all: function(e) {
