@@ -56,6 +56,15 @@ var Level = function(num) {
 		}
 	}
 
+	mod.restart = function() {
+		entities.destroy();
+		input.reset();
+		global.sprites = [];
+
+		level = new Level(mod.num);
+		level.generate();
+	}
+
 	mod.generate = function() {
 		// destroy old collisions
 		wallCollision.boxes = [];

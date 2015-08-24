@@ -1,17 +1,12 @@
 var GameOver = function() {
 	Text("GAME OVER", -xOffset+104, -yOffset+64);
 
-	dinosaur.sprite.speed = 0;
+	dinosaur.stop();
 
 	var mod = Menu(-xOffset+120, -yOffset+128, ["retry", "main menu"], [
 		function() {
-			var levelnum = level.num;
+			level.restart();
 			destroy();
-
-			entities.destroy();
-
-			level = new Level(levelnum);
-			level.generate();
 		},
 		function() {
 			destroy();

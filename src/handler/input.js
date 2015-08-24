@@ -16,6 +16,7 @@ var input = (function () {
 		arrowLeft: 37,
 		enter: 13,
 		space: 32,
+		r: 82,
 		m: 77,
 		0: 48,
 		1: 49,

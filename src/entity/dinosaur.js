@@ -89,14 +89,22 @@ var Dinosaur = function() {
 			move((Math.PI * 3) / 2);
 		}
 		else {
-			mod.sprite.speed = 0;
-			mod.sprite.setAnimation("");
+			mod.stop();
+		}
+	};
 
-			if (animationName == "dinosaurLeft") {
-				mod.sprite.image = leftImage;
-			} else {
-				mod.sprite.image = rightImage;
-			}
+	input.onDown[input.keys.r] = function() {
+		level.restart();
+	};
+
+	mod.stop = function() {
+		mod.sprite.speed = 0;
+		mod.sprite.setAnimation("");
+
+		if (animationName == "dinosaurLeft") {
+			mod.sprite.image = leftImage;
+		} else {
+			mod.sprite.image = rightImage;
 		}
 	};
 

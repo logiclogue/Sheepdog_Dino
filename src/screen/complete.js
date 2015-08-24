@@ -1,7 +1,7 @@
 var CompleteScreen = function() {
 	Text("LEVEL COMPLETE", -xOffset+104, -yOffset+64);
 
-	dinosaur.sprite.speed = 0;
+	dinosaur.stop();
 
 	var mod = Menu(-xOffset+120, -yOffset+128, ["next", "main menu"], [
 		function() {
