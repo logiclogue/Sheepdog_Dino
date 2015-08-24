@@ -1,9 +1,9 @@
 var PreScreen = function(num) {
-	Text("LEVEL "+num, -xOffset+104, -yOffset+64);
+	game.set.offset(0, 0);
+	Text("LEVEL "+num, 104, 64);
+	Text(msg[num-1], (320-msg[num-1].length*8)/2, 80);
 
-	dinosaur.sprite.speed = 0;
-
-	var mod = Menu(-xOffset+120, -yOffset+128, ["start"], [
+	var mod = Menu(120, 128, ["start"], [
 		function() {
 			destroy();
 			entities.destroy();
@@ -16,9 +16,6 @@ var PreScreen = function(num) {
 	game.set.method(function() {
 		// keys
 		input.run();
-
-		camera.update();
-
 	});
 
 	function destroy() {
