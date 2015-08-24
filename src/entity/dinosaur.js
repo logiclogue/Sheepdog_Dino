@@ -9,12 +9,14 @@ var Dinosaur = function() {
 	var rightImage = "mainSprites_11";
 	var fallingImage = "mainSprites_14";
 
+	mod.isDead = false;
 	mod.speed = 0.05;
 	mod.sprite.image = leftImage;
 	mod.sprite.setAnimation(animationName, animationSpeed);
 
 
 	function fall(e) {
+		mod.isDead = true;
 		mod.sprite.setAnimation();
 		mod.sprite.image = fallingImage;
 		mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
@@ -89,6 +91,7 @@ var Dinosaur = function() {
 	};
 
 	mod.destroy = function() {
+		mod.isDead = true;
 		mod.sprite.destroy();
 	};
 
