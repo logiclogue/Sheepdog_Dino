@@ -7,7 +7,7 @@ var msg = [
 	"some sort of gathering",
 	"does not make sense",
 	"chess board",
-	"",
+	"think",
 	"another fun maze",
 	"",
 	"",
