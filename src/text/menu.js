@@ -75,12 +75,24 @@ var Menu = function(x, y, strings, theFunctions) {
 	input.onDown[input.keys.up] = function() {
 		mod.up();
 	};
+	input.onDown[input.keys.arrowUp] = function() {
+		mod.up();
+	};
 
 	input.onDown[input.keys.down] = function() {
 		mod.down();
 	};
+	input.onDown[input.keys.arrowDown] = function() {
+		mod.down();
+	};
 
 	input.onDown[input.keys.m] = function() {
+		mod.select();
+	};
+	input.onDown[input.keys.enter] = function() {
+		mod.select();
+	};
+	input.onDown[input.keys.space] = function() {
 		mod.select();
 	};
 
