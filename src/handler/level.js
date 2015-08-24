@@ -3,6 +3,7 @@ var Level = function(num) {
 
 
 	var scoreText;
+	var codeText;
 	var total = 0;
 
 	mod.num = num;
@@ -56,6 +57,12 @@ var Level = function(num) {
 	}
 
 	mod.generate = function() {
+		// destroy old collisions
+		wallCollision.boxes = [];
+		holeCollision.boxes = [];
+		goalCollision.boxes = [];
+
+		// draw level from png
 		imgToData("res/level/level_"+num+".png", function(map, width, height) {
 			for (var i = 0; i < map.data.length; i += 4) {
 				var index = i / 4;
@@ -108,6 +115,7 @@ var Level = function(num) {
 			};
 
 			scoreText = Text("saved "+mod.score+"/"+total);
+			codeText = Text("code "+levelCode(mod.num));
 
 			game.set.method(function() {
 				// keys
@@ -123,6 +131,7 @@ var Level = function(num) {
 
 				scoreText.updateText("saved "+mod.score+"/"+total);
 				scoreText.updateXY(-xOffset+8, -yOffset+8);
+				codeText.updateXY(-xOffset+220, -yOffset+8);
 
 			});
 
