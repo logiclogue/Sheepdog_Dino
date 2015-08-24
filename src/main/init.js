@@ -17,6 +17,7 @@ var dinosaurCollision = game.CollisionGroup();
 var wallCollision = game.CollisionGroup();
 var holeCollision = game.CollisionGroup();
 var goalCollision = game.CollisionGroup();
+var ghostCollision = game.CollisionGroup();
 
 var dinosaur,
 	camera,

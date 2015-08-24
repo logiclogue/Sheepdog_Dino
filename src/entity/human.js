@@ -133,6 +133,23 @@ var Human = function(x, y) {
 		}
 	});
 
+	// senses ghost
+	wallGroup.addCollision(ghostCollision, {
+		general: function(e) {
+			mod.running((Math.PI + Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x));
+
+			// if not running then run
+			if (!isRunning) {
+				isRunning = true;
+
+				setTimeout(function() {
+					mod.stopped();
+					isRunning = false;
+				}, 500);
+			}
+		}
+	});
+
 
 	return mod;
 };

@@ -4,6 +4,7 @@ var Ghost = function(x, y) {
 
 	var wallGroup = new game.CollisionGroup();
 	var wallTouch = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 32, 32, wallGroup);
+	var ghostBox = new game.CollisionBox(0, 0, 64, 64, ghostCollision);
 	var leftImage = "mainSprites_20";
 	var rightImage = "mainSprites_21";
 	var lastMove = new Date().getTime();
@@ -17,6 +18,7 @@ var Ghost = function(x, y) {
 
 	mod.update = function() {
 		wallTouch.updateXY(mod.sprite.x, mod.sprite.y);
+		ghostBox.updateXY(mod.sprite.x-16, mod.sprite.y-16);
 	
 		if (new Date().getTime() > lastMove + 500) {
 			lastMove = new Date().getTime();
