@@ -1,9 +1,9 @@
 var CompleteScreen = function() {
-	Text("LEVEL COMPLETE", -xOffset+104, -yOffset+64);
+	Text("GAME OVER", -xOffset+104, -yOffset+64);
 
 	dinosaur.sprite.speed = 0;
 
-	var mod = Menu(-xOffset+120, -yOffset+128, ["next level", "main menu"], [
+	var mod = Menu(-xOffset+120, -yOffset+128, ["retry", "main menu"], [
 		function() {
 			var levelnum = level.num;
 			destroy();

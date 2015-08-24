@@ -2,6 +2,7 @@ var Dinosaur = function() {
 	var mod = Entity();
 
 
+	dinosaurCollision = game.CollisionGroup();
 	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 6, 3, dinosaurCollision);
 	var animationName = "dinosaurLeft";
 	var animationSpeed = 100;
