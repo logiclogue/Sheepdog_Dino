@@ -10,7 +10,7 @@ var MainMenu = function() {
 		function() {
 			destroy();
 
-			var level = new Level(1);
+			level = new Level(1);
 			level.generate();
 		},
 		function() {

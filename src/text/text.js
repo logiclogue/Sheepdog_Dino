@@ -28,11 +28,13 @@ var Text = function(text, x, y) {
 			}
 
 			if (letter[i] !== undefined) {
-				letter[i].destroy();
+				letter[i].visible = false;
+			} else {
+				letter[i] = game.Sprite();
 			}
 
 			if (index != -1) {
-				letter[i] = game.Sprite();
+				letter[i].visible = true;
 				letter[i].image = "font_" + index;
 				letter[i].x = x + i * 8;
 				letter[i].y = y;
@@ -44,7 +46,7 @@ var Text = function(text, x, y) {
 	drawString(text);
 
 	mod.updateXY = function(x, y) {
-		for (var i = 0; i < text.length; i++) {
+		for (var i = 0; i < letter.length; i++) {
 			if (letter[i] !== undefined) {
 				letter[i].x = x + i * 8;
 				letter[i].y = y;

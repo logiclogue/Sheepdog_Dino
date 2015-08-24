@@ -7,6 +7,7 @@ var Human = function(x, y) {
 	var stillImage = "mainSprites_16";
 	var fallingImage = "mainSprites_19";
 	var isRunning = false;
+	var isDestroyed = false;
 
 	mod.speed = 0.07;
 	mod.sprite.image = "mainSprites_16";
@@ -63,6 +64,7 @@ var Human = function(x, y) {
 	mod.destroy = function() {
 		wallGroup.destroy();
 		mod.sprite.destroy();
+		mod.update = function() {};
 	};
 
 
@@ -111,7 +113,12 @@ var Human = function(x, y) {
 			mod.controller = function() {};
 
 			setTimeout(function() {
-				mod.destroy();
+				if (!isDestroyed) {
+					isDestroyed = true;
+					mod.destroy();
+					score++;
+					level.checkComplete();
+				}
 			}, 1000);
 		}
 	});

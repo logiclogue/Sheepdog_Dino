@@ -19,4 +19,7 @@ var holeCollision = game.CollisionGroup();
 var goalCollision = game.CollisionGroup();
 
 var dinosaur,
-	camera;
+	camera,
+	level;
+
+var score = 0;

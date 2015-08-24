@@ -1,5 +1,8 @@
 var Level = function(num) {
 
+	var scoreText;
+	var total = 0;
+
 	function imgToData(url, callback) {
 		var canvas, ctx, img;
 		
@@ -37,8 +40,13 @@ var Level = function(num) {
 	    return componentToHex(r) + componentToHex(g) + componentToHex(b);
 	}
 
-	this.generate = function() {
+	this.checkComplete = function() {
+		if (total == score) {
+			console.log("complete!");
+		}
+	}
 
+	this.generate = function() {
 		imgToData("res/level/level_"+num+".png", function(map, width, height) {
 			for (var i = 0; i < map.data.length; i += 4) {
 				var index = i / 4;
@@ -70,6 +78,7 @@ var Level = function(num) {
 						break;
 					// human
 					case "ffff00":
+						total++;
 						drawTile(x, y);
 						Human(x*32, y*32);
 						break;
@@ -89,6 +98,8 @@ var Level = function(num) {
 				dinosaur.controller(e);
 			};
 
+			scoreText = Text("saved "+score+"/"+total);
+
 			game.set.method(function() {
 				// keys
 				input.run();
@@ -100,6 +111,9 @@ var Level = function(num) {
 				xOffset = Math.round(-camera.sprite.x+gameWidth/2-16);
 				yOffset = Math.round(-camera.sprite.y+gameHeight/2-16)
 				game.set.offset(xOffset, yOffset);
+
+				scoreText.updateText("saved "+score+"/"+total);
+				scoreText.updateXY(-xOffset+8, -yOffset+8);
 
 			});
 
