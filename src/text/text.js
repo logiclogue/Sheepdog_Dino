@@ -1,5 +1,5 @@
 var Text = function(text, x, y) {
-	var mod = Entity();
+	var mod = {};
 
 
 	x = x || 0;
