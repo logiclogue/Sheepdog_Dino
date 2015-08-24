@@ -2,5 +2,21 @@ var msg = [
 	"you are the monster",
 	"humans are scared of you",
 	"use it to your advantage",
-	"mind the void"
+	"mind the void",
+	"mazes are fun",
+	"some sort of gathering",
+	"",
+	"chess board",
+	"",
+	"another fun maze",
+	"",
+	"",
+	"fine margins",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"caged forever"
 ];
