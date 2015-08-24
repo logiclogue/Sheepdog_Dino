@@ -42,6 +42,9 @@ var Level = function(num) {
 					// dinosaur
 					case "00ff00":
 						drawTile(x, y);
+						dinosaur = new Dinosaur();
+						camera = new Camera();
+						camera.following = dinosaur;
 						dinosaur.sprite.x = camera.sprite.x = x*32;
 						dinosaur.sprite.y = camera.sprite.y = y*32;
 						break;
@@ -72,6 +75,10 @@ var Level = function(num) {
 			}
 
 			dinosaur.sprite.order.front();
+
+			input.fnc = function(e) {
+				dinosaur.controller(e);
+			};
 		});
 
 	}

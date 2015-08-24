@@ -18,6 +18,9 @@ var wallCollision = game.CollisionGroup();
 var holeCollision = game.CollisionGroup();
 var goalCollision = game.CollisionGroup();
 
+var dinosaur,
+	camera;
+
 
 function componentToHex(c) {
     var hex = c.toString(16);

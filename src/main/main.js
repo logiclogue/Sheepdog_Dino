@@ -4,11 +4,6 @@
 
 var level = new Level(1);
 
-var dinosaur = new Dinosaur();
-var camera = new Camera();
-
-camera.following = dinosaur;
-
 
 var keys = {
 	up: 87,
@@ -22,11 +17,6 @@ var keys = {
 level.generate();
 
 
-input.fnc = function(e) {
-	dinosaur.controller(e);
-};
-
-dinosaur.sprite.order.front();
 
 //game.Rect(-100, -100, 1000, 1000, "#000000");
 var menu = Menu(0, 0, ["play", "credit", "exit"], [function() {
