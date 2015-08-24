@@ -10,7 +10,18 @@ var input = (function () {
 		down: 83,
 		right: 68,
 		left: 65,
-		m: 77
+		m: 77,
+		0: 48,
+		1: 49,
+		2: 50,
+		3: 51,
+		4: 52,
+		5: 53,
+		6: 54,
+		7: 55,
+		8: 56,
+		9: 57
+		
 	};
 	mod.onDown = [];
 
@@ -38,7 +49,7 @@ var input = (function () {
 			keysdown[e.keyCode] = true;
 
 			if (mod.onDown[e.keyCode] !== undefined) {
-				mod.onDown[e.keyCode](e.keyCode);
+				mod.onDown[e.keyCode]();
 			}
 		}
 	});

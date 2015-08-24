@@ -4,7 +4,7 @@ var PreScreen = function(num) {
 	var levelText = "LEVEL "+num;
 
 	Text(levelText, (320-levelText.length*8)/2, 64);
-	Text(msg[num-1], (320-msg[num-1].length*8)/2, 80);
+	Text(msg[num-1], (320-msg[num-1].length*8)/2, 96);
 
 	var mod = Menu(140, 128, ["start"], [
 		function() {
