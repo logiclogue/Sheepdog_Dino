@@ -2,8 +2,7 @@
 // Ludum Dare 33 game jam entry
 
 
-var input = new Input();
-var level = new Level();
+var level = new Level(1);
 
 var dinosaur = new Dinosaur();
 var camera = new Camera();

@@ -1,21 +1,22 @@
-var Input = function () {
-	var that = this;
+var input = (function () {
+	var mod = {};
+
 
 	var keysdown = [];
 
-	this.enable = true;
-	this.keys = {};
+	mod.enable = true;
+	mod.keys = {};
 
-	this.fnc = function() {};
-	this.run = function() {
-		if (that.enable) {
-			this.fnc(keysdown);
+	mod.fnc = function() {};
+	mod.run = function() {
+		if (mod.enable) {
+			mod.fnc(keysdown);
 		}
 	};
 
 
 	document.addEventListener("keydown", function(e) {
-		if (that.enable) {
+		if (mod.enable) {
 			keysdown[e.keyCode] = true;
 		}
 	});
@@ -24,4 +25,6 @@ var Input = function () {
 		keysdown[e.keyCode] = false;
 	});
 
-};
+
+	return mod;
+})();

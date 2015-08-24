@@ -1,4 +1,4 @@
-var Level = function() {
+var Level = function(num) {
 
 	function imgToData(url, callback) {
 		var canvas, ctx, img;
@@ -30,7 +30,7 @@ var Level = function() {
 
 	this.generate = function() {
 
-		imgToData("res/level/level_1.png", function(map, width, height) {
+		imgToData("res/level/level_"+num+".png", function(map, width, height) {
 			for (var i = 0; i < map.data.length; i += 4) {
 				var index = i / 4;
 				var y = Math.floor(index / width);
