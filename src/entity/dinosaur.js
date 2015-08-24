@@ -27,11 +27,15 @@ var Dinosaur = function() {
 
 		if (!mod.isDead) {
 			mod.isDead = true;
-			level.checkComplete();
+			level.failed = true;
 
+			level.checkComplete();
+			
 			setTimeout(function() {
 				mod.destroy();
-				GameOver();
+				if (!level.complete) {
+					GameOver();
+				}
 			}, 100);
 		}
 	}

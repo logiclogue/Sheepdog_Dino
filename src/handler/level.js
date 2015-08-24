@@ -48,7 +48,7 @@ var Level = function(num) {
 	}
 
 	mod.checkComplete = function() {
-		if (total == mod.score && !dinosaur.isDead && !mod.failed) {
+		if (total == mod.score) {
 			mod.complete = true;
 		} else {
 			mod.complete = false;
