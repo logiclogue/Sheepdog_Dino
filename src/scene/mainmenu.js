@@ -1,7 +1,12 @@
 var MainMenu = function() {
 	game.Rect(-xOffset, -yOffset, gameWidth, gameHeight, "#000000");
 
-	var mod = Menu(0, 0, ["play", "about"], [
+	Text(" w", 132, 64);
+	Text("asd", 132, 72);
+	Text("P/pause", 132, 88);
+	Text("M/select", 132, 96);
+
+	var mod = Menu(140, 128, ["play", "about"], [
 		function() {
 			destroy();
 

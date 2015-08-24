@@ -6,7 +6,7 @@ var Text = function(text, x, y) {
 	y = y || 0;
 
 	var letter = [];
-	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.abcdefghijklmnopqrstuvwxyz"
+	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890/.abcdefghijklmnopqrstuvwxyz"
 
 
 	function drawString(text) {
