@@ -1,9 +1,12 @@
 var PreScreen = function(num) {
 	game.set.offset(0, 0);
-	Text("LEVEL "+num, 104, 64);
+
+	var levelText = "LEVEL "+num;
+
+	Text(levelText, (320-levelText.length*8)/2, 64);
 	Text(msg[num-1], (320-msg[num-1].length*8)/2, 80);
 
-	var mod = Menu(120, 128, ["start"], [
+	var mod = Menu(140, 128, ["start"], [
 		function() {
 			destroy();
 			entities.destroy();

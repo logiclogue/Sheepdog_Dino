@@ -38,7 +38,7 @@ var input = (function () {
 			keysdown[e.keyCode] = true;
 
 			if (mod.onDown[e.keyCode] !== undefined) {
-				mod.onDown[e.keyCode]();
+				mod.onDown[e.keyCode](e.keyCode);
 			}
 		}
 	});
