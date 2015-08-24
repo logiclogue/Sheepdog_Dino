@@ -5,7 +5,9 @@ var Menu = function(x, y, strings, theFunctions) {
 	var text = [];
 	var gapDistance = 16;
 	var selected = 0;
-	var totalOptions = strings.length
+	var totalOptions = strings.length;
+
+	input.reset();
 
 	function draw() {
 		for (var i = 0; i < totalOptions; i++) {

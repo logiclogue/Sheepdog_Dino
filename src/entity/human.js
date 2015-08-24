@@ -95,7 +95,6 @@ var Human = function(x, y) {
 			mod.sprite.image = fallingImage;
 			mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
 			mod.sprite.speed = 0.1;
-			mod.controller = function() {};
 
 			setTimeout(function() {
 				mod.destroy();
@@ -110,7 +109,6 @@ var Human = function(x, y) {
 			mod.sprite.image = stillImage;
 			mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
 			mod.sprite.speed = 0.02;
-			mod.controller = function() {};
 
 			setTimeout(function() {
 				if (!isDestroyed) {

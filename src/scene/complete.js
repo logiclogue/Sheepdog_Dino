@@ -1,11 +1,14 @@
 var CompleteScreen = function() {
-	Text("LEVEL COMPLETE!", -xOffset+132, -yOffset+64);
+	Text("LEVEL COMPLETE!", -xOffset+104, -yOffset+64);
 
-	var mod = Menu(-xOffset+140, -yOffset+128, ["next level", "main menu"], [
+	dinosaur.sprite.speed = 0;
+
+	var mod = Menu(-xOffset+120, -yOffset+128, ["next level", "main menu"], [
 		function() {
+			var levelnum = level.num;
 			destroy();
 
-			level = new Level(1);
+			level = new Level(levelnum+1);
 			level.generate();
 		},
 		function() {
@@ -14,6 +17,14 @@ var CompleteScreen = function() {
 			MainMenu();
 		}
 	]);
+
+	game.set.method(function() {
+		// keys
+		input.run();
+
+		camera.update();
+
+	});
 
 	function destroy() {
 		global.sprites = [];

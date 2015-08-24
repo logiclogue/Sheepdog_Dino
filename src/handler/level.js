@@ -5,6 +5,7 @@ var Level = function(num) {
 	var scoreText;
 	var total = 0;
 
+	mod.num = num;
 	mod.score = 0;
 
 	function imgToData(url, callback) {
@@ -63,8 +64,8 @@ var Level = function(num) {
 					// dinosaur
 					case "00ff00":
 						drawTile(x, y);
-						dinosaur = new Dinosaur();
-						camera = new Camera();
+						dinosaur = Dinosaur();
+						camera = Camera();
 						camera.following = dinosaur;
 						dinosaur.sprite.x = camera.sprite.x = x*32;
 						dinosaur.sprite.y = camera.sprite.y = y*32;
@@ -124,6 +125,12 @@ var Level = function(num) {
 		});
 
 	}
+
+	mod.destroy = function() {
+		dinosaur.destroy();
+		camera.destroy();
+		mod = {};
+	};
 
 
 	return mod;

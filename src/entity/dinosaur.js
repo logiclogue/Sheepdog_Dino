@@ -96,6 +96,7 @@ var Dinosaur = function() {
 	};
 
 
+	// collides with wall
 	dinosaurCollision.addCollision(wallCollision, {
 		general: function() {
 			mod.sprite.x = mod.sprite.pX;
@@ -103,6 +104,7 @@ var Dinosaur = function() {
 		}
 	});
 
+	// falls down hole
 	dinosaurCollision.addCollision(holeCollision, {
 		all: function(e) {
 			fall(e);
