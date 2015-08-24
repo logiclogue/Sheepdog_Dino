@@ -15,7 +15,7 @@ var msg = [
 	"",
 	"",
 	"",
-	"",
+	"rage quit",
 	"",
 	"",
 	"caged forever"
