@@ -1,19 +1,15 @@
-var CompleteScreen = function() {
-	Text("LEVEL COMPLETE", -xOffset+104, -yOffset+64);
+var PreScreen = function(num) {
+	Text("LEVEL "+num, -xOffset+104, -yOffset+64);
 
 	dinosaur.sprite.speed = 0;
 
-	var mod = Menu(-xOffset+120, -yOffset+128, ["next", "main menu"], [
+	var mod = Menu(-xOffset+120, -yOffset+128, ["start"], [
 		function() {
 			destroy();
 			entities.destroy();
 
-			PreScreen(level.num+1);
-		},
-		function() {
-			destroy();
-
-			MainMenu();
+			level = new Level(num);
+			level.generate();
 		}
 	]);
 
