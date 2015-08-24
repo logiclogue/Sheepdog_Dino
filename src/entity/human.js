@@ -96,9 +96,14 @@ var Human = function(x, y) {
 			mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
 			mod.sprite.speed = 0.1;
 
-			setTimeout(function() {
-				mod.destroy();
-			}, 100);
+			if (!isDestroyed && !level.complete) {
+				isDestroyed = true;
+				level.failed = true;
+				setTimeout(function() {
+					mod.destroy();
+					GameOver();
+				}, 100);
+			}
 		}
 	});
 
@@ -110,14 +115,20 @@ var Human = function(x, y) {
 			mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
 			mod.sprite.speed = 0.02;
 
-			setTimeout(function() {
-				if (!isDestroyed) {
-					isDestroyed = true;
-					mod.destroy();
-					level.score++;
-					level.checkComplete();
+			if (!level.complete && !level.failed) {
+				isDestroyed = true;
+				level.score++;
+
+				level.checkComplete();
+
+				if (level.complete) {
+					setTimeout(function() {
+						CompleteScreen();
+						mod.destroy();
+					}, 1000);
 				}
-			}, 1000);
+			}
+			
 		}
 	});
 

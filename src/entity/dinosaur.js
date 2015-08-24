@@ -17,7 +17,6 @@ var Dinosaur = function() {
 
 
 	function fall(e) {
-		mod.isDead = true;
 		mod.sprite.setAnimation();
 		mod.sprite.image = fallingImage;
 		mod.sprite.direction = (Math.PI / 2) + Math.atan2(e.y - mod.sprite.y, e.x - mod.sprite.x);
@@ -26,9 +25,15 @@ var Dinosaur = function() {
 		collision.h = 0;
 		mod.controller = function() {};
 
-		setTimeout(function() {
-			mod.destroy();
-		}, 200);
+		if (!mod.isDead) {
+			mod.isDead = true;
+			level.checkComplete();
+
+			setTimeout(function() {
+				mod.destroy();
+				GameOver();
+			}, 100);
+		}
 	}
 
 
@@ -92,7 +97,6 @@ var Dinosaur = function() {
 	};
 
 	mod.destroy = function() {
-		mod.isDead = true;
 		mod.sprite.destroy();
 	};
 

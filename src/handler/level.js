@@ -7,6 +7,8 @@ var Level = function(num) {
 
 	mod.num = num;
 	mod.score = 0;
+	mod.failed = false;
+	mod.complete = false;
 
 	function imgToData(url, callback) {
 		var canvas, ctx, img;
@@ -46,8 +48,10 @@ var Level = function(num) {
 	}
 
 	mod.checkComplete = function() {
-		if (total == mod.score && !dinosaur.isDead) {
-			CompleteScreen();
+		if (total == mod.score && !dinosaur.isDead && !mod.failed) {
+			mod.complete = true;
+		} else {
+			mod.complete = false;
 		}
 	}
 
@@ -129,6 +133,7 @@ var Level = function(num) {
 	mod.destroy = function() {
 		dinosaur.destroy();
 		camera.destroy();
+		entities.destroy();
 		mod = {};
 	};
 

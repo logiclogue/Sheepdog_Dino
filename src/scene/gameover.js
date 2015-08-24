@@ -1,4 +1,4 @@
-var CompleteScreen = function() {
+var GameOver = function() {
 	Text("GAME OVER", -xOffset+104, -yOffset+64);
 
 	dinosaur.sprite.speed = 0;
@@ -8,7 +8,9 @@ var CompleteScreen = function() {
 			var levelnum = level.num;
 			destroy();
 
-			level = new Level(levelnum+1);
+			entities.destroy();
+
+			level = new Level(levelnum);
 			level.generate();
 		},
 		function() {

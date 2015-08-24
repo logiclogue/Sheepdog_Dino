@@ -8,6 +8,8 @@ var CompleteScreen = function() {
 			var levelnum = level.num;
 			destroy();
 
+			entities.destroy();
+
 			level = new Level(levelnum+1);
 			level.generate();
 		},
