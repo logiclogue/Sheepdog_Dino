@@ -50,7 +50,6 @@ var Menu = function(x, y, strings, theFunctions) {
 	mod.select = function() {
 		if (theFunctions[selected] !== undefined) {
 			theFunctions[selected]();
-			mod.destroy();
 		}
 	};
 
@@ -67,8 +66,27 @@ var Menu = function(x, y, strings, theFunctions) {
 
 		text = [];
 		theFunctions = [];
-		mod = undefined;
+		mod = {};
 	};
+
+
+	input.onDown[input.keys.up] = function() {
+		mod.up();
+	};
+
+	input.onDown[input.keys.down] = function() {
+		mod.down();
+	};
+
+	input.onDown[input.keys.m] = function() {
+		mod.select();
+	};
+
+	game.set.method(function() {
+		// keys
+		input.run();
+
+	});
 
 
 	return mod;
