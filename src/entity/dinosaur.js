@@ -52,28 +52,28 @@ var Dinosaur = function() {
 	};
 
 	mod.controller = function(keysdown) {
-		if (keysdown[keys.up] && keysdown[keys.right]) {
+		if (keysdown[input.keys.up] && keysdown[input.keys.right]) {
 			move(Math.PI / 4);
 		}
-		else if (keysdown[keys.right] && keysdown[keys.down]) {
+		else if (keysdown[input.keys.right] && keysdown[input.keys.down]) {
 			move((Math.PI * 3) / 4);
 		}
-		else if (keysdown[keys.down] && keysdown[keys.left]) {
+		else if (keysdown[input.keys.down] && keysdown[input.keys.left]) {
 			move((Math.PI * 5) / 4);
 		}
-		else if (keysdown[keys.left] && keysdown[keys.up]) {
+		else if (keysdown[input.keys.left] && keysdown[input.keys.up]) {
 			move((Math.PI * 7) / 4);
 		}
-		else if (keysdown[keys.up]) {
+		else if (keysdown[input.keys.up]) {
 			move(0);
 		}
-		else if (keysdown[keys.down]) {
+		else if (keysdown[input.keys.down]) {
 			move(Math.PI);
 		}
-		else if (keysdown[keys.right]) {
+		else if (keysdown[input.keys.right]) {
 			move(Math.PI / 2);
 		}
-		else if (keysdown[keys.left]) {
+		else if (keysdown[input.keys.left]) {
 			move((Math.PI * 3) / 2);
 		}
 		else {
