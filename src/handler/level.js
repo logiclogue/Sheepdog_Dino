@@ -79,8 +79,19 @@ var Level = function(num) {
 			input.fnc = function(e) {
 				dinosaur.controller(e);
 			};
+
 		});
 
 	}
+
+	this.update = function() {
+		// update entities
+		entities.update();
+
+		// camera
+		xOffset = Math.round(-camera.sprite.x+gameWidth/2-16);
+		yOffset = Math.round(-camera.sprite.y+gameHeight/2-16)
+		game.set.offset(xOffset, yOffset);
+	};
 
 }

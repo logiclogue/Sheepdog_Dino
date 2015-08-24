@@ -2,8 +2,6 @@
 // Ludum Dare 33 game jam entry
 
 
-var level = new Level(1);
-
 
 var keys = {
 	up: 87,
@@ -13,14 +11,22 @@ var keys = {
 	m: 77
 };
 
+game.Rect(-xOffset, -yOffset, gameWidth, gameHeight, "#000000");
 
-level.generate();
-
-
-
-//game.Rect(-100, -100, 1000, 1000, "#000000");
 var menu = Menu(0, 0, ["play", "credit", "exit"], [function() {
-	console.log("you selected play!");
+	global.sprites = [];
+	var level = new Level(1);
+	level.generate();
+
+	game.set.method(function() {
+		// keys
+		input.run();
+
+		level.update();
+
+		menu.updateXY(-xOffset, -yOffset);
+
+	});
 }]);
 
 setTimeout(function() {
@@ -32,13 +38,7 @@ game.set.method(function() {
 	// keys
 	input.run();
 
-	// update entities
-	entities.update();
-
-	// camera
-	xOffset = Math.round(-camera.sprite.x+gameWidth/2-16);
-	yOffset = Math.round(-camera.sprite.y+gameHeight/2-16)
-	game.set.offset(xOffset, yOffset);
+	//level.update();
 
 	menu.updateXY(-xOffset, -yOffset);
 

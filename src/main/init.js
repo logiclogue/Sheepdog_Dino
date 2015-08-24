@@ -2,7 +2,7 @@ var game = new ScrixelGame();
 
 var gameWidth = 320;
 var gameHeight = 240;
-var xOffset, yOffset;
+var xOffset = yOffset = 0;
 
 game.set.canvas("gameCanvas", gameWidth, gameHeight);
 game.load.spriteSheet("mainSprites", "res/sprite/sprite_sheet.png", 8, 8);
