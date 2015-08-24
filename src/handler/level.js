@@ -98,6 +98,7 @@ var Level = function(num) {
 					case "ff0000":
 						Wall(x*32, y*32, 1).sprite.order.back();
 						break;
+					// wall top
 					case "ee0000":
 						Wall(x*32, y*32, 2).sprite.order.back();
 						break;
@@ -107,8 +108,14 @@ var Level = function(num) {
 						drawTile(x, y);
 						Human(x*32, y*32);
 						break;
+					// goal
 					case "ff00ff":
 						Goal(x*32, y*32).sprite.order.back();
+						break;
+					// ghost
+					case "959595":
+						drawTile(x, y);
+						Ghost(x*32, y*32);
 						break;
 					// floor tile
 					default:

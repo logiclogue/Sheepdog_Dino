@@ -36,7 +36,7 @@ var Dinosaur = function() {
 				if (!level.complete) {
 					GameOver();
 				}
-			}, 100);
+			}, 200);
 		}
 	}
 
