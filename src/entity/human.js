@@ -116,7 +116,7 @@ var Human = function(x, y) {
 				if (!isDestroyed) {
 					isDestroyed = true;
 					mod.destroy();
-					score++;
+					level.score++;
 					level.checkComplete();
 				}
 			}, 1000);

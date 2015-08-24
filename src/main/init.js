@@ -21,5 +21,3 @@ var goalCollision = game.CollisionGroup();
 var dinosaur,
 	camera,
 	level;
-
-var score = 0;
