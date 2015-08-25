@@ -70,6 +70,7 @@ var Level = function(num) {
 		wallCollision.boxes = [];
 		holeCollision.boxes = [];
 		goalCollision.boxes = [];
+		ghostCollision.boxes = [];
 
 		// draw level from png
 		imgToData("res/level/level_"+num+".png", function(map, width, height) {
