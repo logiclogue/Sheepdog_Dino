@@ -23,3 +23,7 @@ var ghostCollision = game.CollisionGroup();
 var dinosaur,
 	camera,
 	level;
+
+
+// central align
+document.getElementById("gameCanvas").style.paddingLeft = ((window.innerWidth - document.getElementById("gameCanvas").offsetWidth) / 2) + "px";
