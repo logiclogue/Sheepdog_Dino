@@ -99,6 +99,7 @@ var Human = function(x, y) {
 			if (!isDestroyed && !level.complete) {
 				isDestroyed = true;
 				level.failed = true;
+
 				setTimeout(function() {
 					mod.destroy();
 					GameOver();
@@ -121,7 +122,6 @@ var Human = function(x, y) {
 
 				level.checkComplete();
 
-				
 				setTimeout(function() {
 					if (level.complete) {
 						CompleteScreen();

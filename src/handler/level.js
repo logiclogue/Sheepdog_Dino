@@ -67,10 +67,15 @@ var Level = function(num) {
 
 	mod.generate = function() {
 		// destroy old collisions
-		wallCollision.boxes = [];
-		holeCollision.boxes = [];
-		goalCollision.boxes = [];
-		ghostCollision.boxes = [];
+		wallCollision.destroy();
+		holeCollision.destroy();
+		goalCollision.destroy();
+		ghostCollision.destroy();
+
+		wallCollision = game.CollisionGroup();
+		holeCollision = game.CollisionGroup();
+		goalCollision = game.CollisionGroup();
+		ghostCollision = game.CollisionGroup();
 
 		// draw level from png
 		imgToData("res/level/level_"+num+".png", function(map, width, height) {
@@ -85,11 +90,11 @@ var Level = function(num) {
 					// dinosaur
 					case "00ff00":
 						drawTile(x, y);
-						dinosaur = Dinosaur();
+						dinosaur = Dinosaur(x*32, y*32);
 						camera = Camera();
 						camera.following = dinosaur;
-						dinosaur.sprite.x = camera.sprite.x = x*32;
-						dinosaur.sprite.y = camera.sprite.y = y*32;
+						camera.sprite.x = x*32;
+						camera.sprite.y = y*32;
 						break;
 					// hole
 					case "000000":

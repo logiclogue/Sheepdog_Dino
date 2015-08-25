@@ -9,7 +9,6 @@ var PreScreen = function(num) {
 	var mod = Menu(140, 128, ["start"], [
 		function() {
 			destroy();
-			entities.destroy();
 
 			level = new Level(num);
 			level.generate();
@@ -22,10 +21,11 @@ var PreScreen = function(num) {
 	});
 
 	function destroy() {
-		global.sprites = [];
+		entities.destroy();
 		mod.destroy();
 		mod = {};
 		input.reset();
+		global.sprites = [];
 	};
 
 

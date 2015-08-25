@@ -1,14 +1,21 @@
-var Dinosaur = function() {
+var Dinosaur = function(x, y) {
 	var mod = Entity();
 
 
+	mod.sprite.x = x;
+	mod.sprite.y = y;
+	mod.sprite.pX = x;
+	mod.sprite.pY = y;
+
+	dinosaurCollision.destroy();
 	dinosaurCollision = game.CollisionGroup();
-	var collision = new game.CollisionBox(mod.sprite.x, mod.sprite.y, 6, 3, dinosaurCollision);
+	var collision = new game.CollisionBox(mod.sprite.x+13, mod.sprite.y+18, 6, 3, dinosaurCollision);
 	var animationName = "dinosaurLeft";
 	var animationSpeed = 100;
 	var leftImage = "mainSprites_8";
 	var rightImage = "mainSprites_11";
 	var fallingImage = "mainSprites_14";
+
 
 	mod.isDead = false;
 	mod.speed = 0.05;
