@@ -7,6 +7,7 @@ var xOffset = yOffset = 0;
 game.set.canvas("gameCanvas", gameWidth, gameHeight);
 game.load.spriteSheet("mainSprites", "res/sprite/sprite_sheet.png", 8, 8);
 game.load.spriteSheet("font", "res/sprite/font.png", 8, 8);
+game.load.sprite("logo", "res/sprite/logo.png");
 game.animation.add("humanRunning", ["mainSprites_17", "mainSprites_16", "mainSprites_18"]);
 game.animation.add("dinosaurLeft", ["mainSprites_9", "mainSprites_8", "mainSprites_10", "mainSprites_8"]);
 game.animation.add("dinosaurRight", ["mainSprites_12", "mainSprites_11", "mainSprites_13", "mainSprites_11"]);

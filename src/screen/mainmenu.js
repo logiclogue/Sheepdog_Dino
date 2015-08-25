@@ -2,12 +2,17 @@ var MainMenu = function() {
 	game.Rect(-xOffset, -yOffset, gameWidth, gameHeight, "#000000");
 	game.set.offset(0, 0);
 
-	Text(" w ", 132, 64);
-	Text("asd", 132, 72);
-	Text("R/restart", 132, 88);
-	Text("M/select", 132, 96);
+	var logo = new game.Sprite();
+	logo.x = 100;
+	logo.y = 0;
+	logo.image = "logo";
 
-	var mod = Menu(140, 128, ["new game", "enter code", "about"], [
+	Text(" W  or ARROW", 112, 64);
+	Text("ASD     KEYS", 112, 72);
+	Text("R/restart", 88, 88);
+	Text("SPACE/ENTER/select", 88, 96);
+
+	var mod = Menu(120, 128, ["new game", "enter code", "about"], [
 		function() {
 			destroy();
 			PreScreen(1);
