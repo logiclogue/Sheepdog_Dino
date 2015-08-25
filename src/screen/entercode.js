@@ -32,7 +32,7 @@ var EnterCode = function() {
 		if (passcode.length > 5) {
 			passcode = passcode.substring(0, 6);
 
-			for (var i = 0; i < 100; i++) {
+			for (var i = 0; i < 20; i++) {
 				if (passcode == levelCode(i)) {
 					destroy();
 					PreScreen(i);
