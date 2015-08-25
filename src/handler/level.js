@@ -12,21 +12,21 @@ var Level = function(num) {
 	mod.complete = false;
 
 	function imgToData(url, callback) {
-		var canvas, ctx, img;
+		var mapCanvas, mapCtx, mapImg;
+
+		mapCanvas = document.createElement("canvas");
+
+		mapImg = new Image();
+		mapImg.src = url;
 		
-		canvas = document.createElement("canvas");
+		mapImg.addEventListener("load", function() {
+			mapCanvas.width = mapImg.width;
+			mapCanvas.height = mapImg.height;
 
-		img = new Image();
-		img.src = url;
-		
-		img.addEventListener("load", function() {
-			canvas.width = img.width;
-			canvas.height = img.height;
+			mapCtx = mapCanvas.getContext("2d");
 
-			ctx = canvas.getContext("2d");
-
-			ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-			callback(ctx.getImageData(0, 0, canvas.width, canvas.height), img.width, img.height);
+			mapCtx.drawImage(mapImg, 0, 0);
+			callback(mapCtx.getImageData(0, 0, mapImg.width, mapImg.height), mapImg.width, mapImg.height);
 		});
 	}
 
@@ -78,13 +78,13 @@ var Level = function(num) {
 		ghostCollision = game.CollisionGroup();
 
 		// draw level from png
-		imgToData("res/level/level_"+num+".png", function(map, width, height) {
+		imgToData("res/level/level_"+num+".gif", function(map, width, height) {
 			for (var i = 0; i < map.data.length; i += 4) {
 				var index = i / 4;
 				var y = Math.floor(index / width);
-				var x = index - y * width;
+				var x = index - (y * width);
 
-				var id = rgbToHex(map.data[i], map.data[i+1], map.data[i+2])
+				var id = rgbToHex(map.data[i], map.data[i+1], map.data[i+2]);
 
 				switch(id) {
 					// dinosaur

@@ -9,9 +9,11 @@ var msg = [
 	"chess board",
 	"false alarm",
 	"another fun maze",
+	"pretty patterns",
 	"patinence",
-	"fine margins",
 	"diagonals",
+	"fine margins",
+	"not too hard",
 	"rage quit",
 	"caged forever"
 ];
